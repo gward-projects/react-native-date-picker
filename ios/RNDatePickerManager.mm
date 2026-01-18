@@ -9,12 +9,29 @@
 
 @implementation RCTConvert(UIDatePicker)
 
-RCT_ENUM_CONVERTER(UIDatePickerMode, (@{
-  @"time": @(UIDatePickerModeTime),
-  @"date": @(UIDatePickerModeDate),
-  @"datetime": @(UIDatePickerModeDateAndTime),
-  @"countdown": @(UIDatePickerModeCountDownTimer), // not supported yet
-}), UIDatePickerModeTime, integerValue)
++ (UIDatePickerMode)UIDatePickerMode:(id)json
+{
+    static NSDictionary *modes;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        modes = @{
+            @"time": @(UIDatePickerModeTime),
+            @"date": @(UIDatePickerModeDate),
+            @"datetime": @(UIDatePickerModeDateAndTime),
+            @"countdown": @(UIDatePickerModeCountDownTimer), // not supported yet
+        };
+    });
+    
+    if ([json isEqualToString:@"yearAndMonth"]) {
+        if (@available(iOS 17.4, *)) {
+            return (UIDatePickerModeYearAndMonth);
+        } else {
+            return (UIDatePickerMode)4269;
+        }
+    }
+    
+    return (UIDatePickerMode)[RCTConvertEnumValue("UIDatePickerMode", modes, @(UIDatePickerModeTime), json) integerValue];
+}
 
 @end
 
@@ -234,6 +251,23 @@ RCT_EXPORT_METHOD(closePicker)
     return 216;
 }
 
+// New Architecture support - provide module instance to TurboModule system
++ (BOOL)requiresMainQueueSetup {
+    return NO;
+}
+
+#ifdef RCT_NEW_ARCH_ENABLED
+// Implement the Spec protocol methods required by TurboModule
+- (void)getConstants:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject {
+    resolve(@{});
+}
+
+- (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:(const facebook::react::ObjCTurboModule::InitParams &)params {
+    return std::make_shared<facebook::react::NativeRNDatePickerSpecJSI>(params);
+}
+#endif
+
 @end
+
 
 
