@@ -5,6 +5,7 @@
   "source": "src/index",
   "main": "src/index.js",
   "typings": "index.d.ts",
+  "packageManager": "yarn@4.13.0",
   "scripts": {
     "prepublishOnly": "mv README.md githubREADME.md && mv npmREADME.md README.md",
     "postpublish": "mv README.md npmREADME.md && mv githubREADME.md README.md",
@@ -18,7 +19,7 @@
     "emulator": "bash ./scripts/start-android-emulator.sh",
     "maestro:ios": "maestro test --include-tags=ios .maestro/",
     "maestro:android": "maestro test --include-tags=android .maestro/",
-    "typecheck": "yarn tsc",
+    "type-check": "tsc --noEmit",
     "lint": "yarn eslint ./src"
   },
   "repository": {
@@ -42,22 +43,20 @@
     "react-native-date-picker"
   ],
   "peerDependencies": {
-    "react": ">= 17.0.1",
-    "react-native": ">= 0.64.3"
+    "react": "*",
+    "react-native": "*"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
-    "@react-native/eslint-config": "0.73.2",
-    "@types/jest": "^29.5.12",
-    "@types/react": "18.3.3",
-    "babel-jest": "^26.6.3",
-    "eslint": "^8.19.0",
-    "eslint-plugin-ft-flow": "^3.0.9",
-    "jest": "^26.6.3",
-    "prettier": "2.8.8",
-    "react-native": "0.74.1",
-    "typescript": "5.4.5"
+    "@babel/core": "7.29.0",
+    "@babel/preset-env": "7.29.0",
+    "@react-native/eslint-config": "0.84.1",
+    "@types/jest": "30.0.0",
+    "@types/react": "19.2.14",
+    "babel-jest": "30.3.0",
+    "jest": "30.3.0",
+    "react": "19.2.3",
+    "react-native": "0.84.1",
+    "typescript": "5.9.3"
   },
   "codegenConfig": {
     "name": "RNDatePickerSpecs",

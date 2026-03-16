@@ -360,3 +360,8 @@ Temporary Items
 **/ios/output
 
 .idea
+
+.yarn/*
+.pnp.*
+!.yarn/patches/
+!.yarn/patches/**

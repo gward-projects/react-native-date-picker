@@ -1,5 +1,0 @@
-appId: com.rn071
----
-- launchApp:
-    stopApp: true
-- tapOn: Advanced

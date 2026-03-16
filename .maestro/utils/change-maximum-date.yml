@@ -1,7 +1,0 @@
-appId: com.rn071
----
-- runFlow:
-    file: change-prop.yml
-    env:
-      PROP: maximumDate
-      VALUE: ${VALUE}
