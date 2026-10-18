@@ -79,11 +79,9 @@ export const useModal = ({props, id}: {props: ModalProps, id: string | undefined
     }, [previousProps, props])
 
     useEffect(() => {
-        // Not typed through NativeEventEmitter's type parameter: gward-app still compiles this file
-        // with the legacy React Native types, where the class is not generic.
-        const eventEmitter = new NativeEventEmitter(NativeModule ?? undefined)
-        eventEmitter.addListener('onConfirm', (params) => onConfirm(params as ConfirmParams))
-        eventEmitter.addListener('onCancel', (params) => onCancel(params as CancelParams))
+        const eventEmitter = new NativeEventEmitter<{onConfirm: [ConfirmParams], onCancel: [CancelParams]}>(NativeModule)
+        eventEmitter.addListener('onConfirm', onConfirm)
+        eventEmitter.addListener('onCancel', onCancel)
         return () => {
             eventEmitter.removeAllListeners('onConfirm')
             eventEmitter.removeAllListeners('onCancel')

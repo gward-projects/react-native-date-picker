@@ -46,17 +46,12 @@ export const DatePickerAndroid = React.memo(function DatePickerAndroid(props: Pl
     )
 
     useEffect(() => {
-        // Not typed through NativeEventEmitter's type parameter: gward-app still compiles this file
-        // with the legacy React Native types, where the class is not generic.
-        const eventEmitter = new NativeEventEmitter(NativeModule ?? undefined)
-        const subscriptionDateChange = eventEmitter.addListener(
-            'dateChange',
-            (event) => onChange(event as NativeData<DateData>)
-        )
-        const subscriptionSpinnerStateChange = eventEmitter.addListener(
-            'spinnerStateChange',
-            (event) => onSpinnerStateChanged(event as NativeData<SpinnerStateData>)
-        )
+        const eventEmitter = new NativeEventEmitter<{
+            dateChange: [NativeData<DateData>],
+            spinnerStateChange: [NativeData<SpinnerStateData>],
+        }>(NativeModule)
+        const subscriptionDateChange = eventEmitter.addListener('dateChange', onChange)
+        const subscriptionSpinnerStateChange = eventEmitter.addListener('spinnerStateChange', onSpinnerStateChanged)
         return () => {
             subscriptionDateChange.remove()
             subscriptionSpinnerStateChange.remove()
