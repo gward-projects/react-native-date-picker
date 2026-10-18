@@ -2,8 +2,8 @@
 
 **Nature :** historique vivant des revues de versions · **Dernière mise à jour :** 17 octobre 2026.
 
-Ce fichier suit les mêmes règles que le journal de gward-app
-(`documentation/journal-mises-a-jour-dependances.md`), dont il reprend le format.
+Ce fichier suit les mêmes règles que le journal des dépendances de gward-app, dont il reprend le
+format.
 
 ## Règles de tenue
 
@@ -18,8 +18,8 @@ indiquant :
   dans le navigateur.
 
 Chaque correctif annoncé comme un apport doit être rattaché à la version exacte qui le porte, en
-comparant les archives npm et les commits amont (voir « Vérifier les changements réels » dans
-`documentation/procedures/agents/mettre-a-jour-dependances.md` de gward-app). Une simple montée
+comparant les archives npm et les commits amont (voir la procédure de
+montée des dépendances de gward-app). Une simple montée
 sans différence à analyser ne nécessite pas d'entrée.
 
 ## 17 octobre 2026 — React Native 0.88, React 19.3, TypeScript 6, passage en TypeScript et alignement sur gward-app
@@ -85,8 +85,8 @@ sans différence à analyser ne nécessite pas d'entrée.
 - Codegen : le schéma généré à partir de `src/fabric/` est identique avant et après, avec la codegen
   de React Native 0.86 (gward-app) comme avec celle de 0.88 ; les copies `.js` supprimées n'y
   contribuaient pas. `android/` et `ios/` sont inchangés : pas de nouveau build natif nécessaire.
-- Testé dans gward-app par le propriétaire sur Android et iOS (sélecteurs en modale de
-  `AppDoubleDatePicker` : confirmation, annulation, bornes, langue, textes, thèmes clair et sombre,
-  ouvertures répétées), sur le build natif existant.
+- Testé dans gward-app par le propriétaire sur Android et iOS (les deux sélecteurs en modale de
+  l'app : confirmation, annulation, bornes, langue, textes, thèmes clair et sombre, ouvertures
+  répétées), sur le build natif existant.
 - **Non fait** : build natif avec React Native 0.88 (à faire lors de la migration de gward-app) ;
   mode en ligne (non utilisé par gward-app).
