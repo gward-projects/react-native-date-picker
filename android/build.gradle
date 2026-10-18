@@ -50,8 +50,9 @@ android {
     }
     buildTypes {
         release {
+            // The library is not minified on its own: R8 runs on the whole app. No proguardFiles
+            // here: AGP 9 rejects proguard-android.txt, and this fork has no proguard-rules.pro.
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }

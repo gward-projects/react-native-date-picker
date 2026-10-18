@@ -95,6 +95,11 @@ sans différence à analyser ne nécessite pas d'entrée.
   les modules précompilés d'Expo 58 : ils passent en `<React/…>` (5.1.1), forme qui fonctionne aussi
   avec React Native 0.86. L'amont a les mêmes imports. Le podspec appelle désormais
   `install_modules_dependencies` sans condition.
-- **Non fait** : build natif avec React Native 0.88 après ce correctif (à refaire par le
+- Build Android avec le plugin Android 9 (même jour) : échec à l'évaluation du projet, qui
+  déclarait pour sa release `getDefaultProguardFile('proguard-android.txt')`, refusé par AGP 9
+  (`-dontoptimize`). La ligne ne servait pas : la bibliothèque n'est pas minifiée (`minifyEnabled
+  false`) et le `proguard-rules.pro` référencé n'existe pas. Elle est retirée (5.1.2). Aucune autre
+  bibliothèque native de gward-app n'utilise encore `proguard-android.txt`.
+- **Non fait** : builds natifs avec React Native 0.88 après ces correctifs (à refaire par le
   propriétaire) ;
   mode en ligne (non utilisé par gward-app).

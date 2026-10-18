@@ -104,6 +104,8 @@ imports de types avec les modules du projet.
 - iOS : les en-têtes React sont importés par leur chemin de module (`<React/RCTConvert.h>`), pas
   entre guillemets (`"RCTConvert.h"`), qui ne compile plus avec React Native 0.88 et les modules
   précompilés d'Expo ; le podspec appelle toujours `install_modules_dependencies` ;
+- Android : la release de la bibliothèque ne déclare plus de `proguardFiles` ; le plugin Android 9
+  refuse `proguard-android.txt`, et le `proguard-rules.pro` référencé n'existait pas ;
 - `examples/`, les scripts d'émulateur et Maestro ont été supprimés ; Jest est remplacé par
   `node:test`.
 
