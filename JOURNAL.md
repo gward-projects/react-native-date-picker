@@ -88,5 +88,13 @@ sans différence à analyser ne nécessite pas d'entrée.
 - Testé dans gward-app par le propriétaire sur Android et iOS (les deux sélecteurs en modale de
   l'app : confirmation, annulation, bornes, langue, textes, thèmes clair et sombre, ouvertures
   répétées), sur le build natif existant.
-- **Non fait** : build natif avec React Native 0.88 (à faire lors de la migration de gward-app) ;
+- Build iOS avec React Native 0.88 (première tentative du propriétaire, 18 octobre 2026) : échec de
+  compilation, `'RCTConvert.h' file not found` dans `RNDatePickerManager.mm`. Les en-têtes React
+  importés entre guillemets (`RCTConvert.h`, `RCTUtils.h`, `UIView+React.h`, `RCTComponent.h`,
+  `RCTView.h`, `RCTFabricComponentsPlugins.h`) ne se trouvent plus qu'à leur chemin de module avec
+  les modules précompilés d'Expo 58 : ils passent en `<React/…>` (5.1.1), forme qui fonctionne aussi
+  avec React Native 0.86. L'amont a les mêmes imports. Le podspec appelle désormais
+  `install_modules_dependencies` sans condition.
+- **Non fait** : build natif avec React Native 0.88 après ce correctif (à refaire par le
+  propriétaire) ;
   mode en ligne (non utilisé par gward-app).

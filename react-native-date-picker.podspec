@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
 
   s.dependency 'React-Core'
 
-  if ENV['RCT_NEW_ARCH_ENABLED'] == '1' then
-    install_modules_dependencies(s)
-  end
+  # The new architecture is always enabled since React Native 0.82: always declare its
+  # dependencies and header search paths.
+  install_modules_dependencies(s)
 end

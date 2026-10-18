@@ -101,6 +101,9 @@ imports de types avec les modules du projet.
 - spécifications codegen (`src/fabric/`) importées depuis `react-native` (`CodegenTypes`), les
   copies compilées `.js` ont été supprimées ;
 - le support TurboModule iOS a été retiré (commit `revert: turbomodule`) ;
+- iOS : les en-têtes React sont importés par leur chemin de module (`<React/RCTConvert.h>`), pas
+  entre guillemets (`"RCTConvert.h"`), qui ne compile plus avec React Native 0.88 et les modules
+  précompilés d'Expo ; le podspec appelle toujours `install_modules_dependencies` ;
 - `examples/`, les scripts d'émulateur et Maestro ont été supprimés ; Jest est remplacé par
   `node:test`.
 

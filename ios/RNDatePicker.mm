@@ -1,13 +1,13 @@
 #import "RNDatePicker.h"
 
 #ifdef RCT_NEW_ARCH_ENABLED
-#import "RCTConvert.h"
+#import <React/RCTConvert.h>
 #import <React/RCTConversions.h>
 #import <react/renderer/components/RNDatePickerSpecs/ComponentDescriptors.h>
 #import <react/renderer/components/RNDatePickerSpecs/EventEmitters.h>
 #import <react/renderer/components/RNDatePickerSpecs/Props.h>
 #import <react/renderer/components/RNDatePickerSpecs/RCTComponentViewHelpers.h>
-#import "RCTFabricComponentsPlugins.h"
+#import <React/RCTFabricComponentsPlugins.h>
 
 #ifdef __cplusplus
 #include <string>
@@ -17,9 +17,9 @@
 using namespace facebook::react;
 
 #else
-#import "RCTUtils.h"
-#import "UIView+React.h"
-#import "RCTComponent.h"
+#import <React/RCTUtils.h>
+#import <React/UIView+React.h>
+#import <React/RCTComponent.h>
 #endif
 
 
