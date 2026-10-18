@@ -1,26 +1,25 @@
 {
   "name": "react-native-date-picker",
-  "version": "5.0.13",
+  "version": "5.1.0",
   "description": "A datetime picker for React Native. In-modal or inlined. Supports Android and iOS.",
-  "source": "src/index",
-  "main": "src/index.js",
-  "typings": "index.d.ts",
-  "packageManager": "yarn@4.13.0",
+  "main": "src/index.tsx",
+  "files": [
+    "src",
+    "android",
+    "ios",
+    "react-native-date-picker.podspec"
+  ],
+  "packageManager": "yarn@4.18.1",
   "scripts": {
+    "check": "tsx tools/checks/check.ts",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p tests && tsc --noEmit -p tools/checks",
+    "test": "tsx tools/checks/test.ts",
+    "setup-hooks": "husky",
     "prepublishOnly": "mv README.md githubREADME.md && mv npmREADME.md README.md",
     "postpublish": "mv README.md npmREADME.md && mv githubREADME.md README.md",
-    "test": "jest src",
-    "install:release": "adb install examples/Rn069/android/app/build/outputs/apk/release/app-release.apk",
-    "install:debug": "adb install examples/Rn069/android/app/build/outputs/apk/debug/app-debug.apk",
-    "build:release": "(cd examples/Rn069/android && ./gradlew assembleRelease) && yarn install:release",
-    "build:debug": "(cd examples/Rn069/android && ./gradlew assembleDebug) && yarn install:debug",
     "number-picker:generate": "bash ./scripts/generate-number-picker.sh",
-    "number-picker:update-patch": "bash ./scripts/update-patch.sh",
-    "emulator": "bash ./scripts/start-android-emulator.sh",
-    "maestro:ios": "maestro test --include-tags=ios .maestro/",
-    "maestro:android": "maestro test --include-tags=android .maestro/",
-    "type-check": "tsc --noEmit",
-    "lint": "yarn eslint ./src"
+    "number-picker:update-patch": "bash ./scripts/update-patch.sh"
   },
   "repository": {
     "type": "git",
@@ -47,16 +46,17 @@
     "react-native": "*"
   },
   "devDependencies": {
-    "@babel/core": "7.29.0",
-    "@babel/preset-env": "7.29.0",
-    "@react-native/eslint-config": "0.84.1",
-    "@types/jest": "30.0.0",
-    "@types/react": "19.2.14",
-    "babel-jest": "30.3.0",
-    "jest": "30.3.0",
-    "react": "19.2.3",
-    "react-native": "0.84.1",
-    "typescript": "5.9.3"
+    "@types/estree": "1.0.9",
+    "@types/node": "24.19.2",
+    "@types/react": "19.3.0",
+    "eslint": "9.39.5",
+    "eslint-config-expo": "58.0.4",
+    "husky": "9.1.7",
+    "jiti": "2.7.0",
+    "react": "19.3.0",
+    "react-native": "0.88.0",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3"
   },
   "codegenConfig": {
     "name": "RNDatePickerSpecs",

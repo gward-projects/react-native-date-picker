@@ -1,14 +1,31 @@
 {
   "compilerOptions": {
-    "module": "es6",
-    "noEmit": true,
-    "checkJs": true,
-    "moduleResolution": "node",
-    "skipLibCheck": true,
-    "strictNullChecks": true,
-    "jsx": "react",
+    "allowJs": false,
     "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "customConditions": ["react-native"],
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "jsx": "react-native",
+    "lib": ["DOM", "ESNext"],
+    "module": "preserve",
+    "moduleDetection": "force",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "es2022",
+    "types": []
   },
-  "include": ["src/**/*"]
-
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", "tests", "tools/checks"]
 }

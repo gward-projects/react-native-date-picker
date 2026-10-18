@@ -1,9 +1,8 @@
-import type {HostComponent, ViewProps} from 'react-native'
-import {BubblingEventHandler, Double, Int32, WithDefault,} from 'react-native/Libraries/Types/CodegenTypes'
-import codegenNativeComponent from 'react-native/Libraries/Utilities/codegenNativeComponent'
+import {codegenNativeComponent} from 'react-native'
+import type {CodegenTypes, HostComponent, ViewProps} from 'react-native'
 
 type DateEvent = {
-    timestamp: Double
+    timestamp: CodegenTypes.Double
 }
 
 export interface NativeProps extends ViewProps {
@@ -11,9 +10,9 @@ export interface NativeProps extends ViewProps {
     date: string
     maximumDate?: string
     minimumDate?: string
-    minuteInterval?: Int32
-    mode?: WithDefault<'date' | 'time' | 'datetime' | 'yearAndMonth', 'datetime'>
-    onChange: BubblingEventHandler<DateEvent>
+    minuteInterval?: CodegenTypes.Int32
+    mode?: CodegenTypes.WithDefault<'date' | 'time' | 'datetime' | 'yearAndMonth', 'datetime'>
+    onChange: CodegenTypes.BubblingEventHandler<DateEvent>
 
     // Type has to be string to allow null/undefined as value.
     // For timezoneOffset, undefined and 0 means different things. 0 means GMT and undefined means device timezone.
@@ -21,14 +20,14 @@ export interface NativeProps extends ViewProps {
     textColor?: string
     dividerColor?: string
     buttonColor?: string
-    is24hourSource?: WithDefault<'locale' | 'device', 'device'>
-    theme?: WithDefault<'light' | 'dark' | 'auto', 'auto'>
+    is24hourSource?: CodegenTypes.WithDefault<'locale' | 'device', 'device'>
+    theme?: CodegenTypes.WithDefault<'light' | 'dark' | 'auto', 'auto'>
 
     // Modal props
     modal?: boolean
     open?: boolean
-    onConfirm?: BubblingEventHandler<DateEvent>
-    onCancel?: BubblingEventHandler<undefined>
+    onConfirm?: CodegenTypes.BubblingEventHandler<DateEvent>
+    onCancel?: CodegenTypes.BubblingEventHandler<undefined>
     confirmText?: string
     cancelText?: string
     title?: string
