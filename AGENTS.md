@@ -104,7 +104,13 @@ imports de types avec les modules du projet.
   entre guillemets (`"RCTConvert.h"`), qui ne compile plus avec React Native 0.88 et les modules
   précompilés d'Expo ; le podspec appelle toujours `install_modules_dependencies` ;
 - Android : la release de la bibliothèque ne déclare plus de `proguardFiles` ; le plugin Android 9
-  refuse `proguard-android.txt`, et le `proguard-rules.pro` référencé n'existait pas ;
+  refuse `proguard-android.txt`. Le fork fournit en revanche des règles consumer
+  (`android/proguard-rules.pro`, `consumerProguardFiles`) : `time4j-android` crée
+  `AndroidResourceLoader` par réflexion et ses propres règles ne gardent pas son constructeur, que
+  R8 retire quand les optimisations sont actives (preset `proguard-android-optimize.txt` des
+  applications Expo 58) ;
+- l'erreur d'installation (`createInstallationError`) joint la cause d'origine à son message, que
+  l'amont masquait : sans elle, un module natif cassé en release ne laisse aucune piste ;
 - `examples/`, les scripts d'émulateur et Maestro ont été supprimés ; Jest est remplacé par
   `node:test`.
 

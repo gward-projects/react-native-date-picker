@@ -50,3 +50,12 @@ export const getInstallationErrorMessage = () => {
         return messages[Platform.OS].nonExpo
     }
 }
+
+/**
+ * Keeps the failure that hid the native module: without it, a release build that strips or breaks
+ * the module only reports the generic installation message.
+ */
+export const createInstallationError = (cause: unknown) => {
+    const reason = cause instanceof Error ? cause.message : String(cause)
+    return new Error(`${getInstallationErrorMessage()}\n\nCause: ${reason}`, {cause})
+}

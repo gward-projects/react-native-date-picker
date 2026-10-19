@@ -37,6 +37,7 @@ android {
         targetSdkVersion safeExtGet('targetSdkVersion', 25)
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
+        consumerProguardFiles 'proguard-rules.pro'
     }
 
     sourceSets {
@@ -50,8 +51,8 @@ android {
     }
     buildTypes {
         release {
-            // The library is not minified on its own: R8 runs on the whole app. No proguardFiles
-            // here: AGP 9 rejects proguard-android.txt, and this fork has no proguard-rules.pro.
+            // The library is not minified on its own: R8 runs on the whole app, with the consumer
+            // rules above. No proguardFiles here: AGP 9 rejects proguard-android.txt.
             minifyEnabled false
         }
     }

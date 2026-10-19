@@ -1,7 +1,7 @@
 import type {HostComponent, TurboModule} from 'react-native'
 import {NativeModules, Platform, requireNativeComponent, TurboModuleRegistry} from 'react-native'
 
-import {getInstallationErrorMessage} from './installationError'
+import {createInstallationError} from './installationError'
 
 declare global {
     // Set by the app to silence the installation error, see installationError.ts.
@@ -27,9 +27,9 @@ export const getNativeComponent = <T extends object>(): HostComponent<T> | null 
                     'react-native-date-picker is not supported on this platform'
                 )
         }
-    } catch {
+    } catch (error) {
         if (globalThis.ignoreDatePickerWarning) return null
-        throw Error(getInstallationErrorMessage())
+        throw createInstallationError(error)
     }
 }
 
@@ -45,8 +45,8 @@ export const getNativeModule = (): DatePickerNativeModule | null => {
                     'react-native-date-picker is not supported on this platform'
                 )
         }
-    } catch {
+    } catch (error) {
         if (globalThis.ignoreDatePickerWarning) return null
-        throw Error(getInstallationErrorMessage())
+        throw createInstallationError(error)
     }
 }
