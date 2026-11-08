@@ -1,6 +1,6 @@
 # Journal des mises à jour de dépendances
 
-**Nature :** historique vivant des revues de versions · **Dernière mise à jour :** 17 octobre 2026.
+**Nature :** historique vivant des revues de versions · **Dernière mise à jour :** 8 novembre 2026.
 
 Ce fichier suit les mêmes règles que le journal des dépendances de gward-app, dont il reprend le
 format.
@@ -21,6 +21,26 @@ Chaque correctif annoncé comme un apport doit être rattaché à la version exa
 comparant les archives npm et les commits amont (voir la procédure de
 montée des dépendances de gward-app). Une simple montée
 sans différence à analyser ne nécessite pas d'entrée.
+
+## 8 novembre 2026 — React Native 0.88.1, React 19.3.1 et `@types/estree` 1.0.10
+
+| Package | Départ | Arrivée |
+| ------- | ------ | ------- |
+| `react-native` (développement) | 0.88.0 | 0.88.1 |
+| `react` (développement) | 19.3.0 | 19.3.1 |
+| `@types/estree` (développement) | 1.0.9 | 1.0.10 |
+
+- React Native 0.88.1 : version de gward-app, revue dans son journal (30 octobre 2026).
+- React 19.3.1 : un seul commit, [facebook/react#37845](https://github.com/facebook/react/pull/37845),
+  qui ne touche que le protocole Flight des React Server Components ; le build client ne change
+  que par son numéro de version. gward-app reste en 19.3.0, version du moteur de rendu de React
+  Native 0.88 : sans effet sur ce que l'app installe.
+- `@types/estree` 1.0.10 ([DefinitelyTyped#75804](https://github.com/DefinitelyTyped/DefinitelyTyped/pull/75804)) :
+  `Program.body` passe par l'interface extensible `ProgramBodyMap`, même union
+  (`Directive | ModuleDeclaration | Statement`) ; `Program["body"]`, utilisé par
+  `tools/eslint/sortImportsByFirstName.ts`, garde le même type.
+- Vérifications : `yarn check` passe. Non exécutés : build natif et test sur appareil, sans
+  changement du code de la bibliothèque.
 
 ## 17 octobre 2026 — React Native 0.88, React 19.3, TypeScript 6, passage en TypeScript et alignement sur gward-app
 

@@ -46,15 +46,15 @@
     "react-native": "*"
   },
   "devDependencies": {
-    "@types/estree": "1.0.9",
+    "@types/estree": "1.0.10",
     "@types/node": "24.19.2",
     "@types/react": "19.3.0",
     "eslint": "9.39.5",
     "eslint-config-expo": "58.0.4",
     "husky": "9.1.7",
     "jiti": "2.7.0",
-    "react": "19.3.0",
-    "react-native": "0.88.0",
+    "react": "19.3.1",
+    "react-native": "0.88.1",
     "tsx": "4.23.15",
     "typescript": "6.0.3"
   },
